@@ -120,4 +120,12 @@ public class CompanyService {
 
         return stocksList;
     }
+
+   public List<Stock> findStocksByDate(String companyCode, String start, String end){
+        log.info("Companies by stock date:: {}", companyRepository.findByStockTimestampBetween(companyCode, start, end));
+
+        return null;
+    }
+
+
 }

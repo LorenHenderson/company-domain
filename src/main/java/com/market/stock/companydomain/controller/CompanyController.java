@@ -3,6 +3,7 @@ package com.market.stock.companydomain.controller;
 import com.market.stock.companydomain.domain.Company;
 import com.market.stock.companydomain.domain.RequestCompany;
 //import jakarta.validation.Valid;
+import com.market.stock.companydomain.domain.Stock;
 import com.market.stock.companydomain.service.CompanyService;
 //import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -78,5 +79,10 @@ public class CompanyController {
         }
 
         return  ResponseEntity.status(HttpStatus.OK).body(deletedCompany);
+    }
+
+    @GetMapping("/company/{companyCode}/{start}/{end}")
+    List<Stock> getstocksList(@PathVariable String companyCode, @PathVariable String startDate, @PathVariable String endDate){
+        return companyService.findStocksByDate(companyCode, startDate, endDate);
     }
 }
